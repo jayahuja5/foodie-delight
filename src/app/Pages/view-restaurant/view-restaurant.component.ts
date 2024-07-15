@@ -26,6 +26,7 @@ export class ViewRestaurantComponent {
   id: string = '';
   currentRestaurant: RestauarntDetails | null = null;
   name: string = '';
+  deleteModal: boolean = false;
 
   constructor(
     private aroute: ActivatedRoute,

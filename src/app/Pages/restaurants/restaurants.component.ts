@@ -35,8 +35,9 @@ export class RestaurantsComponent {
     window.scrollTo({top: 0});
     this.common.getAllRestaurants();
     this.common.restaurants.subscribe((data: RestauarntDetails[] | null) => {
-      this.list = data;
-      this.backupList = data;
+      let temp = data && data.length ? data : null;
+      this.list = temp;
+      this.backupList = temp;
     })
   }
 

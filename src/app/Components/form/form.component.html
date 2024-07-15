@@ -6,7 +6,7 @@
                 [id]="input.name" [placeholder]="input.label" [formControlName]="input.name"
                 required="{{input.validators?.required}}" (ngModelChange)="checkUpdate()">
             <label [for]="input.name">{{input.label}}{{input.validators?.required ? '*' : ''}}</label>
-            <div class="invalid-feedback always d-block" [ngClass]="form.controls[input.name].touched && form.controls[input.name].valid ? 'text-success' : 'text-secondary'" *ngIf="input.info">{{input.info}}</div>
+            <div class="invalid-feedback always d-block" [ngClass]="form.controls[input.name].valid ? 'text-success' : 'text-secondary'" *ngIf="input.info">{{input.info}}</div>
             <div class="invalid-feedback">Please provide a valid <span class="text-lowercase">{{input.label}}</span>
             </div>
         </div>
