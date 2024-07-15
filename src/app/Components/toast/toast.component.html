@@ -1,0 +1,12 @@
+<div class="col-12 col-md-auto position-absolute bottom-0 end-0 p-md-4 p-3" *ngIf="getShow()">
+    <div class="toast-container position-relative z-3">
+        <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">{{getTitle()}}</strong>
+            </div>
+            <div class="toast-body">
+                {{getContent()}}
+            </div>
+        </div>
+    </div>
+</div>

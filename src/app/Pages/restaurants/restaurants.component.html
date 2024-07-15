@@ -1,0 +1,49 @@
+<div class="row h-100">
+    <div class="col-12 py-md-2 d-flex flex-column">
+        
+        <div class="w-100 px-md-5 py-3 d-flex flex-wrap flex-md-nowrap align-items-center gap-3 gap-md-4 justify-content-between position-sticky top-0 z-2 filter mt-4">
+            <div class="col-12 col-md d-flex align-items-center gap-4">
+                <div class="d-flex align-items-center">
+                    <div class="d-block d-md-none" (click)="showMenu()"><button class="d-flex btn lh-1 p-2"><i class="bi bi-list fs-4"></i></button></div>
+                    <h1>Restaurants</h1>
+                </div>
+                <div class="vr d-none d-md-block" *ngIf="list && list.length"></div>
+                <div class="d-block ms-auto ms-md-0" routerLink="/restaurants/add" *ngIf="list && list.length"><button class="btn btn-outline-secondary d-flex align-items-center gap-2 lh-1 text-nowrap"><i class="bi bi-plus fs-4"></i><span class="d-none d-md-block">Add Restaurant</span></button></div>
+            </div>
+            <div class="col col-md-3">
+                <div class="input-group">
+                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+                    <input type="text" class="form-control" placeholder="Search" aria-label="Search" [(ngModel)]="search" (ngModelChange)="filter()" aria-describedby="basic-addon1">
+                </div>
+            </div>
+        </div>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-4 g-4 px-md-5 mt-md-4 mt-2 mb-md-5 mb-3" *ngIf="list && list.length">
+            <div class="col" *ngFor="let item of list">
+                <button class="w-100 h-100 btn focus-ring p-0 m-0 border-0 text-start" routerLink="/restaurants/view/{{item.id}}">
+                    <div class="card shadow-sm position-relative h-100">
+                        <span class="position-absolute z-1 end-0 p-2 d-flex align-items-center justify-content-center gap-1">
+                            <div class="p-1 bg-white border" *ngFor="let type of item.typeTiming?.type" [ngClass]="type === 'veg' ? ' border-success' : 'border-danger'">
+                                <div class="p-1 rounded-circle" [ngClass]="type === 'veg' ? ' bg-success' : 'bg-danger'"></div>
+                            </div>
+                        </span>
+                        <img src="{{item.basicDetails?.image}}"
+                            class="card-img-top object-fit-cover" height="150px">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between mb-1 gap-2">
+                                <span class="text-truncate" title="KFC">{{item.basicDetails?.name}}</span>
+                                <span class="badge text-bg-success d-flex align-items-center gap-1">5.0 <i class="bi bi-star-fill"></i></span>
+                            </div>
+                            <div class="text-secondary">{{item.basicDetails?.keywords}}</div>
+                        </div>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <div class="row h-100 align-items-center justify-content-center" *ngIf="list === null">
+            <app-feedback [title]="emptyPage.title" [subtitle]="emptyPage.subtitle" [image]="emptyPage.icon" [button]="emptyPage.btn" (btnClick)="addProduct()"></app-feedback>
+        </div>
+
+    </div>
+</div>

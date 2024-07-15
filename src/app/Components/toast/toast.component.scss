@@ -1,0 +1,18 @@
+.show {
+    transform-origin: bottom right;
+    animation: pop .2s ease-in-out;
+
+    @keyframes pop {
+        0% {
+            transform: scale(0);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+}
+
+.toast-body {
+    background-color: rgba(var(--bs-body-color-rgb), 0.03);
+}

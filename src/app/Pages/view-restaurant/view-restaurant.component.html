@@ -1,0 +1,49 @@
+<div class="row h-100">
+    <div class="col-12 py-2 d-flex flex-column">
+
+        <div class="w-100 px-md-5 py-3 d-flex align-items-center gap-4 justify-content-between mt-md-4">
+            <div class="col d-flex align-items-center gap-4">
+                <h1>{{(new ? 'Add Restaurant' : name)}}</h1>
+            </div>
+            <div class="d-flex align-items-center" *ngIf="new">
+                <button class="btn btn-success focus-ring d-flex align-items-center gap-3 px-4 py-3 lh-1 text-nowrap" [ngClass]="isAdd ? 'shadow' : ''" (click)="addRestaurant()" [disabled]="!isAdd">
+                    <i class="bi bi-floppy fs-5 me-1"></i>Add
+                </button>
+            </div>
+            <div class="d-flex align-items-center" *ngIf="!new">
+                <button class="btn btn-outline-danger d-flex align-items-center gap-3 p-3 lh-1 text-nowrap" [disabled]="!id" (click)="deleteRestaurant()">
+                    <i class="bi bi-trash fs-5"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="w-100 px-md-5 mt-md-4 pt-3" *ngIf="new">
+            <div class="alert alert-{{isAdd ? 'success' : 'warning'}} d-flex align-items-center gap-3 mb-0" role="alert">
+                <i class="bi bi-{{isAdd ? 'ui-checks' : 'info-circle-fill'}} fs-5"></i>
+                <div class="fw-bold">
+                    {{alertMsg}}
+                </div>
+            </div>
+        </div>
+
+        <div class="w-100 px-md-5 py-4 mt-3">
+            <div class="card">
+                <div class="card-header position-sticky top-0 overflow-x-auto overflow-y-hidden z-3 filter">
+                    <ul class="nav nav-tabs card-header-tabs d-flex flex-nowrap">
+                        <li class="nav-item" *ngFor="let tab of tabs">
+                            <button class="nav-link px-md-4 py-3 text-nowrap" [ngClass]="tab.id === currentSelected ? 'active' : ''" (click)="changeTab(tab.id)">{{tab.title}}</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body py-4" [ngSwitch]="currentSelected">
+                    <app-form [datasource]="basicDetails" [btnLabel]="btnLabel" (onSubmition)="saveDetails($event,'info')" *ngSwitchCase="'info'"></app-form>
+                    <app-form [datasource]="typeTiming" [btnLabel]="btnLabel" (onSubmition)="saveDetails($event,'type')" *ngSwitchCase="'type'"></app-form>
+                    <app-form [datasource]="bankDetails" [btnLabel]="btnLabel" (onSubmition)="saveDetails($event,'bank')" *ngSwitchCase="'bank'"></app-form>
+                    <app-feedback title="Sorry for the inconvenience. This page is under Construction, and will be available soon." image="../../../assets/img/coming-soon.png" *ngSwitchCase="'menu'"></app-feedback>
+                    <app-form [datasource]="preference" [btnLabel]="btnLabel" (onSubmition)="saveDetails($event,'preference')" *ngSwitchCase="'preference'"></app-form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

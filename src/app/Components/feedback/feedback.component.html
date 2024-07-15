@@ -1,0 +1,11 @@
+<div class="col d-flex flex-column align-items-center p-md-5 py-5 gap-5">
+    <div class="d-flex flex-column align-items-center col-md-7 col-11" *ngIf="image || title || subtitle">
+        <img src="{{image}}" width="144px" *ngIf="image">
+        <div class="text-center text-secondary fs-5 mt-3" *ngIf="title">{{title}}</div>
+        <div class="text-center text-secondary text-opacity-75 fs-6" *ngIf="subtitle">{{subtitle}}</div>
+    </div>
+    <button type="button" tabindex="0" class="btn btn-primary d-flex align-items-center gap-2 lh-1 text-nowrap" [ngClass]="button.icon ? 'py-2 px-4' : 'py-3 px-4'" *ngIf="button"
+        (click)="btnClick.emit(button.id)"><i *ngIf="button.icon" class="bi bi-{{button.icon}}"
+            [ngClass]="button.iconSize ? 'fs-' + button.iconSize : ''"></i>{{button.icon ? ' '
+        :''}}{{button.title}}</button>
+</div>

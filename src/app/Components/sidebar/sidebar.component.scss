@@ -1,0 +1,56 @@
+.sidebar {
+
+    .ratio {
+        min-width: 50px;
+    }
+
+    .active {
+        background-color: var(--bs-primary);
+        color: var(--bs-white);
+    }
+
+    .icon:hover {
+        background-color: var(--bs-dark-bg-subtle);
+        color: var(--bs-dark);
+
+        .popup {
+            display: block;
+            transform: scale(.8);
+            transition: all .15s ease-in-out;
+        }
+    }
+
+    .popup {
+        transform: scale(0);
+        transform-origin: left center;
+        pointer-events: none;
+        z-index: 1080;
+    }
+
+    .popup::before {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 10px;
+        height: 10px;
+        left: -10px;
+        top: 50%;
+        transform: translateY(-50%);
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+        border-right: 8px solid var(--bs-light-border-subtle);
+    }
+    .popup::after {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 10px;
+        height: 10px;
+        left: -10px;
+        top: 50%;
+        transform: translateY(-50%);
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        border-right: 5px solid var(--bs-white);
+    }
+}

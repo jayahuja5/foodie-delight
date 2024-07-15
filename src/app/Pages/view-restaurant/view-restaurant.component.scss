@@ -1,0 +1,12 @@
+.nav-tabs {
+
+    .nav-link.active {
+        color: var(--bs-dark);
+        font-weight: 700;
+    }
+
+    .nav-link {
+        color: rgba(var(--bs-dark-rgb), .6);
+    }
+
+}
