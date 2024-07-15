@@ -6,12 +6,12 @@
                 <h1>{{(new ? 'Add Restaurant' : name)}}</h1>
             </div>
             <div class="d-flex align-items-center" *ngIf="new">
-                <button class="btn btn-success focus-ring d-flex align-items-center gap-3 px-4 py-3 lh-1 text-nowrap" [ngClass]="isAdd ? 'shadow' : ''" (click)="addRestaurant()" [disabled]="!isAdd">
+                <button class="btn btn-success focus-ring d-flex align-items-center gap-md-3 px-md-4 py-md-3 gap-1 p-2 lh-1 text-nowrap" [ngClass]="isAdd ? 'shadow' : ''" (click)="addRestaurant()" [disabled]="!isAdd">
                     <i class="bi bi-floppy fs-5 me-1"></i>Add
                 </button>
             </div>
             <div class="d-flex align-items-center" *ngIf="!new">
-                <button class="btn btn-outline-danger d-flex align-items-center gap-3 p-3 lh-1 text-nowrap" [disabled]="!id" (click)="deleteRestaurant()">
+                <button class="btn btn-outline-danger d-flex align-items-center p-md-3 p-2 lh-1 text-nowrap" [disabled]="!id" (click)="deleteRestaurant()">
                     <i class="bi bi-trash fs-5"></i>
                 </button>
             </div>
@@ -26,7 +26,7 @@
             </div>
         </div>
 
-        <div class="w-100 px-md-5 py-4 mt-3">
+        <div class="w-100 px-md-5 py-4 mt-md-3">
             <div class="card">
                 <div class="card-header position-sticky top-0 overflow-x-auto overflow-y-hidden z-3 filter">
                     <ul class="nav nav-tabs card-header-tabs d-flex flex-nowrap">
