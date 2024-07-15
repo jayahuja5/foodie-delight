@@ -2,29 +2,40 @@
     <div *ngFor="let input of _datasource" [ngClass]="'col-md-' + input.size">
         <div class="form-floating" *ngIf="input.type === 'text' || input.type === 'number' || input.type === 'time'">
             <input [type]="input.type" class="form-control"
-                [ngClass]="form.controls[input.name].touched && form.controls[input.name].invalid ? 'is-invalid' : ''"
-                [id]="input.name" [placeholder]="input.label" [formControlName]="input.name" required="{{input.validators?.required}}" (ngModelChange)="checkUpdate()">
+                [ngClass]="form.controls[input.name].touched && form.controls[input.name].invalid ? 'is-invalid' : 'is-valid'"
+                [id]="input.name" [placeholder]="input.label" [formControlName]="input.name"
+                required="{{input.validators?.required}}" (ngModelChange)="checkUpdate()">
             <label [for]="input.name">{{input.label}}{{input.validators?.required ? '*' : ''}}</label>
-            <div class="invalid-feedback">Please provide a valid <span class="text-lowercase">{{input.label}}</span></div>
+            <div class="invalid-feedback always d-block" [ngClass]="form.controls[input.name].touched && form.controls[input.name].invalid ? 'text-secondary' : 'text-success'" *ngIf="input.info">{{input.info}}</div>
+            <div class="invalid-feedback">Please provide a valid <span class="text-lowercase">{{input.label}}</span>
+            </div>
         </div>
         <div class="col-12" *ngIf="input.type === 'btn-check'">
             <label class="col-12 mb-2">{{input.label}}{{input.validators?.required ? '*' : ''}}</label>
-            <div class="d-flex flex-nowrap gap-3" [ngClass]="form.controls[input.name].touched && form.controls[input.name].invalid ? 'is-invalid' : ''">
+            <div class="d-flex flex-nowrap gap-3"
+                [ngClass]="form.controls[input.name].touched && form.controls[input.name].invalid ? 'is-invalid' : ''">
                 <div class="col-auto" *ngFor="let item of input.list">
-                    <input type="checkbox" class="btn-check" [checked]="item.checked" [id]="item.id" autocomplete="off" (click)="item.checked = !item.checked;checkUpdate(item,input)">
-                    <label class="btn btn-outline-primary" [ngClass]="form.controls[input.name].touched && form.controls[input.name].invalid ? 'border-danger' : ''" [for]="item.id">{{item.label}}</label>
+                    <input type="checkbox" class="btn-check" [checked]="item.checked" [id]="item.id" autocomplete="off"
+                        (click)="item.checked = !item.checked;checkUpdate(item,input)">
+                    <label class="btn btn-outline-primary"
+                        [ngClass]="form.controls[input.name].touched && form.controls[input.name].invalid ? 'border-danger' : ''"
+                        [for]="item.id">{{item.label}}</label>
                 </div>
             </div>
-            <div class="invalid-feedback">Please provide a valid <span class="text-lowercase">{{input.label}}</span></div>
+            <div class="invalid-feedback always d-block text-secondary" *ngIf="input.info">{{input.info}}</div>
+            <div class="invalid-feedback">Please provide a valid <span class="text-lowercase">{{input.label}}</span>
+            </div>
         </div>
         <div class="col-12" *ngIf="input.type === 'switch'">
             <div class="form-check form-switch form-check-reverse d-flex align-items-center m-0">
                 <label class="form-check-label w-100 text-start fw-bold" [for]="input.name">{{input.label}}</label>
-                <input class="form-check-input ms-auto" [formControlName]="input.name" type="checkbox" [checked]="input.value" role="switch" [id]="input.name" (ngModelChange)="checkUpdate()">
+                <input class="form-check-input ms-auto" [formControlName]="input.name" type="checkbox"
+                    [checked]="input.value" role="switch" [id]="input.name" (ngModelChange)="checkUpdate()">
             </div>
         </div>
     </div>
     <div class="col-12">
-        <button type="submit" class="col-12 col-sm-auto btn btn-primary fw-bold px-5 py-3" [disabled]="disable || form.invalid">{{btnLabel}}</button>
+        <button type="submit" class="col-12 col-sm-auto btn btn-primary fw-bold px-5 py-3"
+            [disabled]="disable || form.invalid">{{btnLabel}}</button>
     </div>
 </form>
