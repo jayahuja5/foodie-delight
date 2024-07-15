@@ -12,7 +12,7 @@ export class NotFoundComponent {
   constructor(private router: Router) {}
 
   title: string = `Don't worry - site is not crashed. It's just the page that's run into problem.`;
-  icon: string = '../../../assets/img/error_computer.png';
+  icon: string = './assets/img/error_computer.png';
   homeBtn: FeedbackButton = {
     id: 'home',
     title: 'Back to home'

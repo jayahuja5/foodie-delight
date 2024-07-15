@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./soon.component.scss']
 })
 export class SoonComponent {
-  icon: string = '../../../assets/img/coming-soon.png';
+  icon: string = './assets/img/coming-soon.png';
   title: string = 'Sorry for the inconvenience. This page is under Construction, and will be available soon.';
 }

@@ -39,7 +39,7 @@
                     <app-form [datasource]="basicDetails" [btnLabel]="btnLabel" (onSubmition)="saveDetails($event,'info')" *ngSwitchCase="'info'"></app-form>
                     <app-form [datasource]="typeTiming" [btnLabel]="btnLabel" (onSubmition)="saveDetails($event,'type')" *ngSwitchCase="'type'"></app-form>
                     <app-form [datasource]="bankDetails" [btnLabel]="btnLabel" (onSubmition)="saveDetails($event,'bank')" *ngSwitchCase="'bank'"></app-form>
-                    <app-feedback title="Sorry for the inconvenience. This page is under Construction, and will be available soon." image="../../../assets/img/coming-soon.png" *ngSwitchCase="'menu'"></app-feedback>
+                    <app-feedback title="Sorry for the inconvenience. This page is under Construction, and will be available soon." image="./assets/img/coming-soon.png" *ngSwitchCase="'menu'"></app-feedback>
                     <app-form [datasource]="preference" [btnLabel]="btnLabel" (onSubmition)="saveDetails($event,'preference')" *ngSwitchCase="'preference'"></app-form>
                 </div>
             </div>

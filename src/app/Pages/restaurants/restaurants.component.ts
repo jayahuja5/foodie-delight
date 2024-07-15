@@ -19,7 +19,7 @@ export class RestaurantsComponent {
   }
 
   emptyPage: any = {
-    icon: '../assets/img/no_restaurants.png',
+    icon: './assets/img/no_restaurants.png',
     title: 'Seems no restaurant present',
     subtitle: 'Add as many restaurants you want',
     btn: this.addProductBtn
